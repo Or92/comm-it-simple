@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>{{questions[questionNumber-1]}}</h1>
+  <div *ngFor="let answer of answers[questionNumber-1]">
+    <input type="checkbox" value="{{answer}}" #check (change)="handleCheckbox(check.value)">
+    <span>{{answer}}</span>
+  </div>
+
+  <div class="nav" *ngIf="questionNumber <= totalQuestion">
+    <button [disabled]="questionNumber === 1" (click)="prev()">Prev</button>
+    {{questionNumber}}/{{totalQuestion}}
+    <button *ngIf="questionNumber <= totalQuestion" (click)="next()">Next</button>
+  </div>
+  <button *ngIf="questionNumber > totalQuestion">Done! Your grade is {{grade}}</button>
+</div>
